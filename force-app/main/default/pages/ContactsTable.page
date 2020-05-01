@@ -1,0 +1,25 @@
+<apex:page controller="ContactsTable">
+    <apex:pageBlock title="Contacts">
+        <apex:form>
+            <apex:outputLabel value="First Name" />
+            <apex:inputText value="{!firstName}" />
+            <apex:outputLabel value="Last Name" />
+            <apex:inputText value="{!lastName}" />
+            <apex:commandButton value="Filter" action="{!filterByName}" />
+        </apex:form>
+
+        <apex:pageBlockTable    value="{!contacts}"
+                                var="contact">
+            <apex:column value="{!contact.accountId}" />
+            <apex:column headerValue="Name">
+                <apex:outputLink value="/{!contact.id}">
+                    {!contact.Name}
+                </apex:outputLink>
+            </apex:column>
+            <apex:column value="{!contact.title}" />
+            <apex:column value="{!contact.email}" />
+            <apex:column value="{!contact.phone}" />
+        </apex:pageBlockTable>
+
+    </apex:pageBlock>
+</apex:page>
